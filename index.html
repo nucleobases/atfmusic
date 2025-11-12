@@ -361,13 +361,14 @@ function modal_open(idx, song, artist, html){
   const mt=document.getElementById('m-title');
   const ma=document.getElementById('m-artist');
   const mb=document.getElementById('m-body');
-  mi.textContent=idx?String(idx):'';
-  mt.textContent=song||'';
-  ma.textContent=artist||'';
-  mb.innerHTML=html||'';
+  let formatted_artist = artist.replace(/（([^）]+)）/g, '<br>$1');
+  mi.textContent = idx ? String(idx) : '';
+  mt.textContent = song || '';
+  ma.innerHTML = formatted_artist || '';
+  mb.innerHTML = html || '';
   modal.classList.add('active');
   modal.setAttribute('aria-hidden','false');
-  ok=true;
+  ok = true;
   return ok;
 }
 function modal_close(){
